@@ -23,6 +23,7 @@ Loki and Promtail are required for distributed logging.<br/>
 &emsp;-> Promtail config file: **config_files\promtail-local-config.yml**<br/>
 &emsp;-> Start Loki: loki-windows-amds64.exe **--config.file=loki-local-config.yml**<br/>
 &emsp;-> Loki config file: **config_files\loki-local-config.yml**<br/>
+
 # Tracing configuration
 Download Tempo for windows:<br/>
 &emsp;-> Go to: https://github.com/grafana/tempo/releases<br/>
@@ -30,12 +31,14 @@ Download Tempo for windows:<br/>
 &emsp;-> Link to binary: https://github.com/grafana/tempo/releases/download/v2.3.0/tempo_2.3.0_windows_amd64.tar.gz<br/>
 &emsp;-> Start Tempo: tempo.exe **-config.file=tempo.yml**<br/>
 &emsp;-> Tempo config file: **config_files\tempo.yml**<br/>
+
 # Grafana configure Loki and Tempo as datasource
 Start Grafana: grafana-server.exe<br/>
-&emsp;-> Configure Loki datasource: Give URL as : http://localhost:3100<br/>
+&emsp;-> Configure Loki datasource: Give URL as : http://localhost:3100<br/><br/>
 <img src="images/grafana-loki-ds.PNG" width="700" height="700"/><br/>
-&emsp;-> Configure Tempo datasource: Give URL as : http://localhost:9000<br/>
+&emsp;-> Configure Tempo datasource: Give URL as : http://localhost:9000<br/><br/>
 <img src="images/grafana-tempo-ds.PNG" width="700" height="700"/><br/>
+
 # Create spring boot services with dependencies and configuration
 Create two service: user-service and address-service<br/>
 &emsp;-> user-service calls address-service for address related information<br/>
@@ -54,3 +57,10 @@ Create two service: user-service and address-service<br/>
 &emsp;<encoder><br/>
 &emsp;&emsp;<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS, GMT} %p [ traceid=%X{traceId} spanid=%X{spanId} ] %c{1.} [%t] %m%n</pattern><br/>
 &emsp;</encoder><br/>
+
+# Log and Trace snapshots
+Logs with Trace ID and Span ID seen in Grafana - Loki<br/><br/>
+<img src="images/grafana-loki-logs-1.PNG"/><br/><br/>
+<img src="images/grafana-loki-logs-2.PNG"/><br/><br/>
+Traces with Trace ID and Span ID seen in Grafana - Tempo<br/><br/><br/>
+<img src="images/grafana-tempo-traces.PNG"/><br/>
