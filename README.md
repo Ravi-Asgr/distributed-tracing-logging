@@ -33,7 +33,7 @@ Download Tempo for windows:<br/>
 # Grafana configure Loki and Tempo as datasource
 Start Grafana: grafana-server.exe<br/>
 &emsp;-> Configure Loki datasource: Give URL as : http://localhost:3100<br/>
-<img src="images/grafana-loki-ds.PNG"/>
+<img src="images/grafana-loki-ds.PNG" width="200" height="200"/>
 &emsp;-> Configure Tempo datasource: Give URL as : http://localhost:9000<br/>
 <img src="images/grafana-tempo-ds.PNG"/>
 # Create spring boot services with dependencies and configuration
