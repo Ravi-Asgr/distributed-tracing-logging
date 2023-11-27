@@ -13,21 +13,22 @@ A simple service which retrieves user details, calls **address-service** for use
 A simple service which retrieves an user's address, called by **user-service** for user's address details. This is a dummy service returns same response on each call. <br/>
 
 # Build steps
-&emsp;mvn clean install
+Build user-service and address-service as war artifacts.<br/><br/>
+&emsp;mvn clean install<br/>
 
 # Logging configuration
 Loki and Promtail are required for distributed logging.<br/>
 &emsp;-> Start Loki followed by Promtail<br/>
-&emsp;-> Start Promtail: promtail-windows-amd64.exe --config.file=promtail-local-config.yml<br/>
+&emsp;-> Start Promtail: promtail-windows-amd64.exe -**-config.file=promtail-local-config.yml**<br/>
 &emsp;-> Promtail config file: **config_files\promtail-local-config.yml**<br/>
-&emsp;-> Start Loki: loki-windows-amds64.exe --config.file=loki-local-config.yml<br/>
+&emsp;-> Start Loki: loki-windows-amds64.exe **--config.file=loki-local-config.yml**<br/>
 &emsp;-> Loki config file: **config_files\loki-local-config.yml**<br/>
 # Tracing configuration
 Download Tempo for windows:<br/>
 &emsp;-> Go to: https://github.com/grafana/tempo/releases<br/>
 &emsp;-> Expand "Assests" section to find binary for windows<br/>
 &emsp;-> Link to binary: https://github.com/grafana/tempo/releases/download/v2.3.0/tempo_2.3.0_windows_amd64.tar.gz<br/>
-&emsp;-> Start Tempo: tempo.exe -config.file=tempo.yml<br/>
+&emsp;-> Start Tempo: tempo.exe **-config.file=tempo.yml**<br/>
 &emsp;-> Tempo config file: **config_files\tempo.yml**<br/>
 # Grafana configure Loki and Tempo as datasource
 Start Grafana: grafana-server.exe<br/>
