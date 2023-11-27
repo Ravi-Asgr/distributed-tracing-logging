@@ -1,0 +1,42 @@
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+
+positions:
+  filename: /tmp/positions.yaml
+
+clients:
+  - url: http://127.0.0.1:3100/loki/api/v1/push
+
+scrape_configs:
+#- job_name: system
+#  static_configs:
+#  - targets:
+#      - localhost
+#    labels:
+#      job: varlogs
+#      __path__: /var/log/*log
+- job_name: obs_service
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      service: obs_service
+      node_id: obs_service_node_1
+      __path__: D:/apps_01/dfm/logs/observability/appLog.log 
+- job_name: address-service
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      service: address-service
+      node_id: address-service_node_1
+      __path__: D:/apps_01/dfm/logs/distributed-tracing/address-service.log
+- job_name: user-service
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      service: user-service
+      node_id: user-service_node_1
+      __path__: D:/apps_01/dfm/logs/distributed-tracing/user-service.log        
